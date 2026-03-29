@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MLB 各球種最強投手排行 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+         background: #0f172a; color: #e2e8f0; padding: 1rem; }
+  h1 { font-size: 1.2rem; font-weight: 700; color: #f8fafc; margin-bottom: .25rem; }
+  .subtitle { font-size: .8rem; color: #64748b; margin-bottom: 1rem; }
+  .tabs { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+  .tab-btn { background: #1e293b; border: 1px solid #334155; color: #94a3b8;
+              padding: .4rem .75rem; border-radius: 6px; cursor: pointer;
+              font-size: .8rem; transition: all .2s; }
+  .tab-btn:hover { background: #334155; color: #f1f5f9; }
+  .tab-btn.active { background: #3b82f6; border-color: #3b82f6; color: #fff; font-weight: 600; }
+  .code { opacity: .6; font-size: .7rem; margin-left: .25rem; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+  table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+  thead { background: #1e293b; }
+  th { padding: .6rem .75rem; text-align: left; color: #64748b;
+        font-size: .75rem; font-weight: 600; text-transform: uppercase;
+        letter-spacing: .05em; border-bottom: 1px solid #334155; }
+  td { padding: .55rem .75rem; border-bottom: 1px solid #1e293b; }
+  tr:hover td { background: #1e293b88; }
+  .rank { font-weight: 700; font-size: .95rem; width: 2.5rem; }
+  .player { font-weight: 600; color: #f1f5f9; }
+  .hand { font-size: .7rem; color: #64748b; margin-left: .3rem; }
+  .stat { font-family: monospace; font-size: .9rem; }
+  .footer { margin-top: 1rem; font-size: .7rem; color: #475569; text-align: right; }
+  .footer a { color: #3b82f6; text-decoration: none; }
+</style>
+</head>
+<body>
+<h1>⚾ MLB 各球種最強投手 2026</h1>
+<p class="subtitle">依各球種 垂直位移 vs 同速段投手 排行｜資料來源：Baseball Savant</p>
+<div class="tabs"><button class="tab-btn active" onclick="showTab('FF')" id="btn-FF">四縫線快速球<span class="code">(FF)</span></button>
+<button class="tab-btn " onclick="showTab('SI')" id="btn-SI">伸卡球<span class="code">(SI)</span></button>
+<button class="tab-btn " onclick="showTab('FC')" id="btn-FC">切球<span class="code">(FC)</span></button>
+<button class="tab-btn " onclick="showTab('SL')" id="btn-SL">滑球<span class="code">(SL)</span></button>
+<button class="tab-btn " onclick="showTab('SW')" id="btn-SW">掃球<span class="code">(SW)</span></button>
+<button class="tab-btn " onclick="showTab('CU')" id="btn-CU">曲球<span class="code">(CU)</span></button>
+<button class="tab-btn " onclick="showTab('CH')" id="btn-CH">變速球<span class="code">(CH)</span></button>
+<button class="tab-btn " onclick="showTab('FS')" id="btn-FS">指叉球<span class="code">(FS)</span></button>
+</div>
+
+        <div class="tab-panel active" id="panel-FF">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>投手</th>
+                <th>垂直位移 vs 同儕</th>
+                <th>水平位移 vs 同儕</th>
+                <th>球速</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td class="rank">🥇</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+4.4"</td>
+              <td class="stat">-3.6"</td>
+              <td class="stat">91.3 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">🥈</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+4.2"</td>
+              <td class="stat">2.5"</td>
+              <td class="stat">93.9 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">🥉</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+3.8"</td>
+              <td class="stat">-6.4"</td>
+              <td class="stat">96.2 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">4</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+3.2"</td>
+              <td class="stat">-0.9"</td>
+              <td class="stat">96.2 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">5</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+2.9"</td>
+              <td class="stat">-1.4"</td>
+              <td class="stat">94.2 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">6</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+2.9"</td>
+              <td class="stat">-4.4"</td>
+              <td class="stat">100.1 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">7</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+2.8"</td>
+              <td class="stat">-1.6"</td>
+              <td class="stat">93.6 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">8</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+2.6"</td>
+              <td class="stat">-4.4"</td>
+              <td class="stat">95.8 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">9</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+2.5"</td>
+              <td class="stat">-3.4"</td>
+              <td class="stat">96.4 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">10</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+2.2"</td>
+              <td class="stat">4.3"</td>
+              <td class="stat">96.3 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">11</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+2.1"</td>
+              <td class="stat">-0.2"</td>
+              <td class="stat">96.0 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">12</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+2.0"</td>
+              <td class="stat">-3.5"</td>
+              <td class="stat">91.9 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">13</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+1.9"</td>
+              <td class="stat">-4.8"</td>
+              <td class="stat">98.1 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">14</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+1.9"</td>
+              <td class="stat">-6"</td>
+              <td class="stat">96.2 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">15</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+1.8"</td>
+              <td class="stat">0.8"</td>
+              <td class="stat">94.0 mph</td>
+            </tr></tbody>
+          </table>
+        </div>
+        <div class="tab-panel " id="panel-SI">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>投手</th>
+                <th>垂直位移 vs 同儕</th>
+                <th>水平位移 vs 同儕</th>
+                <th>球速</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td class="rank">🥇</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+7.2"</td>
+              <td class="stat">0.8"</td>
+              <td class="stat">90.7 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">🥈</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+6.0"</td>
+              <td class="stat">-1.3"</td>
+              <td class="stat">95.6 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">🥉</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+5.0"</td>
+              <td class="stat">-1"</td>
+              <td class="stat">97.9 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">4</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+4.8"</td>
+              <td class="stat">-3.2"</td>
+              <td class="stat">93.4 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">5</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+4.6"</td>
+              <td class="stat">3.8"</td>
+              <td class="stat">94.4 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">6</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+4.2"</td>
+              <td class="stat">-8.9"</td>
+              <td class="stat">96.1 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">7</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+4.2"</td>
+              <td class="stat">0.7"</td>
+              <td class="stat">97.5 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">8</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+4.1"</td>
+              <td class="stat">1.4"</td>
+              <td class="stat">96.6 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">9</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+4.0"</td>
+              <td class="stat">-0.1"</td>
+              <td class="stat">98.7 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">10</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+3.8"</td>
+              <td class="stat">0"</td>
+              <td class="stat">94.2 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">11</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+3.7"</td>
+              <td class="stat">-0.3"</td>
+              <td class="stat">93.9 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">12</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+3.6"</td>
+              <td class="stat">-0.3"</td>
+              <td class="stat">94.6 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">13</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+3.1"</td>
+              <td class="stat">-6.5"</td>
+              <td class="stat">93.1 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">14</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+2.8"</td>
+              <td class="stat">0.2"</td>
+              <td class="stat">92.8 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">15</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+2.6"</td>
+              <td class="stat">-0.7"</td>
+              <td class="stat">92.6 mph</td>
+            </tr></tbody>
+          </table>
+        </div>
+        <div class="tab-panel " id="panel-FC">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>投手</th>
+                <th>垂直位移 vs 同儕</th>
+                <th>水平位移 vs 同儕</th>
+                <th>球速</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td class="rank">🥇</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+9.1"</td>
+              <td class="stat">0.6"</td>
+              <td class="stat">86.7 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">🥈</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+4.8"</td>
+              <td class="stat">2.3"</td>
+              <td class="stat">92.5 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">🥉</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+3.9"</td>
+              <td class="stat">1.9"</td>
+              <td class="stat">89.9 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">4</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+3.7"</td>
+              <td class="stat">0.7"</td>
+              <td class="stat">89.3 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">5</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+3.6"</td>
+              <td class="stat">-2.4"</td>
+              <td class="stat">91.6 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">6</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+3.5"</td>
+              <td class="stat">-0.7"</td>
+              <td class="stat">91.3 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">7</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+3.5"</td>
+              <td class="stat">-5.2"</td>
+              <td class="stat">88.9 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">8</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+3.2"</td>
+              <td class="stat">-0.2"</td>
+              <td class="stat">88.1 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">9</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+2.0"</td>
+              <td class="stat">2.7"</td>
+              <td class="stat">90.8 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">10</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+2.0"</td>
+              <td class="stat">0.1"</td>
+              <td class="stat">85.0 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">11</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+1.9"</td>
+              <td class="stat">-3"</td>
+              <td class="stat">93.2 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">12</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+1.8"</td>
+              <td class="stat">-3.8"</td>
+              <td class="stat">89.1 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">13</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+1.7"</td>
+              <td class="stat">2"</td>
+              <td class="stat">95.0 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">14</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+1.7"</td>
+              <td class="stat">-2.5"</td>
+              <td class="stat">91.0 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">15</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+1.6"</td>
+              <td class="stat">0.7"</td>
+              <td class="stat">94.6 mph</td>
+            </tr></tbody>
+          </table>
+        </div>
+        <div class="tab-panel " id="panel-SL">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>投手</th>
+                <th>垂直位移 vs 同儕</th>
+                <th>水平位移 vs 同儕</th>
+                <th>球速</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td class="rank">🥇</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+14.7"</td>
+              <td class="stat">-2.7"</td>
+              <td class="stat">80.0 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">🥈</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+7.8"</td>
+              <td class="stat">3.8"</td>
+              <td class="stat">85.4 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">🥉</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+7.5"</td>
+              <td class="stat">1.9"</td>
+              <td class="stat">85.7 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">4</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+6.4"</td>
+              <td class="stat">1.1"</td>
+              <td class="stat">83.1 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">5</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+6.0"</td>
+              <td class="stat">-1"</td>
+              <td class="stat">86.8 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">6</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+5.0"</td>
+              <td class="stat">2.5"</td>
+              <td class="stat">87.2 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">7</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+4.8"</td>
+              <td class="stat">-3.1"</td>
+              <td class="stat">85.1 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">8</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+4.8"</td>
+              <td class="stat">2.7"</td>
+              <td class="stat">85.7 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">9</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+4.4"</td>
+              <td class="stat">7.7"</td>
+              <td class="stat">86.0 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">10</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+4.2"</td>
+              <td class="stat">4.2"</td>
+              <td class="stat">84.3 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">11</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+3.9"</td>
+              <td class="stat">14.5"</td>
+              <td class="stat">83.8 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">12</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+3.7"</td>
+              <td class="stat">2"</td>
+              <td class="stat">85.8 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">13</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+3.6"</td>
+              <td class="stat">1.7"</td>
+              <td class="stat">86.2 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">14</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+3.4"</td>
+              <td class="stat">0.9"</td>
+              <td class="stat">85.9 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">15</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+3.1"</td>
+              <td class="stat">-0.6"</td>
+              <td class="stat">84.6 mph</td>
+            </tr></tbody>
+          </table>
+        </div>
+        <div class="tab-panel " id="panel-SW">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>投手</th>
+                <th>垂直位移 vs 同儕</th>
+                <th>水平位移 vs 同儕</th>
+                <th>球速</th>
+              </tr>
+            </thead>
+            <tbody><tr><td colspan="5" style="text-align:center;padding:2rem;color:#888">本球種本季無符合資格投手</td></tr></tbody>
+          </table>
+        </div>
+        <div class="tab-panel " id="panel-CU">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>投手</th>
+                <th>垂直位移 vs 同儕</th>
+                <th>水平位移 vs 同儕</th>
+                <th>球速</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td class="rank">🥇</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+8.5"</td>
+              <td class="stat">0.3"</td>
+              <td class="stat">78.2 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">🥈</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+7.7"</td>
+              <td class="stat">-1.6"</td>
+              <td class="stat">75.1 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">🥉</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+6.5"</td>
+              <td class="stat">-1.1"</td>
+              <td class="stat">76.1 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">4</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+6.2"</td>
+              <td class="stat">0.3"</td>
+              <td class="stat">76.4 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">5</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+6.0"</td>
+              <td class="stat">1.4"</td>
+              <td class="stat">78.3 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">6</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+5.8"</td>
+              <td class="stat">-2"</td>
+              <td class="stat">80.2 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">7</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+5.8"</td>
+              <td class="stat">1.4"</td>
+              <td class="stat">80.0 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">8</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+5.5"</td>
+              <td class="stat">-1.7"</td>
+              <td class="stat">83.7 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">9</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+4.8"</td>
+              <td class="stat">1.4"</td>
+              <td class="stat">80.6 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">10</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+4.1"</td>
+              <td class="stat">2.2"</td>
+              <td class="stat">82.8 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">11</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+3.7"</td>
+              <td class="stat">1.3"</td>
+              <td class="stat">82.9 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">12</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+3.4"</td>
+              <td class="stat">2.9"</td>
+              <td class="stat">83.6 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">13</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+3.3"</td>
+              <td class="stat">0.7"</td>
+              <td class="stat">79.4 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">14</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+3.2"</td>
+              <td class="stat">1.7"</td>
+              <td class="stat">73.4 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">15</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+3.1"</td>
+              <td class="stat">3.1"</td>
+              <td class="stat">79.2 mph</td>
+            </tr></tbody>
+          </table>
+        </div>
+        <div class="tab-panel " id="panel-CH">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>投手</th>
+                <th>垂直位移 vs 同儕</th>
+                <th>水平位移 vs 同儕</th>
+                <th>球速</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td class="rank">🥇</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+8.1"</td>
+              <td class="stat">-1.3"</td>
+              <td class="stat">88.4 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">🥈</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+7.9"</td>
+              <td class="stat">-0.2"</td>
+              <td class="stat">85.1 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">🥉</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+7.6"</td>
+              <td class="stat">-0.4"</td>
+              <td class="stat">89.1 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">4</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+6.1"</td>
+              <td class="stat">-1.6"</td>
+              <td class="stat">87.3 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">5</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+5.3"</td>
+              <td class="stat">-0.3"</td>
+              <td class="stat">88.4 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">6</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+5.2"</td>
+              <td class="stat">-7.9"</td>
+              <td class="stat">84.9 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">7</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+4.9"</td>
+              <td class="stat">3.9"</td>
+              <td class="stat">85.7 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">8</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+4.9"</td>
+              <td class="stat">-5.1"</td>
+              <td class="stat">87.6 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">9</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+4.8"</td>
+              <td class="stat">-0.6"</td>
+              <td class="stat">85.2 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">10</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+4.8"</td>
+              <td class="stat">-1.4"</td>
+              <td class="stat">90.7 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">11</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+4.5"</td>
+              <td class="stat">-2.5"</td>
+              <td class="stat">85.9 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">12</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+4.3"</td>
+              <td class="stat">-1.8"</td>
+              <td class="stat">89.6 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">13</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+3.9"</td>
+              <td class="stat">-1.2"</td>
+              <td class="stat">89.7 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">14</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+3.7"</td>
+              <td class="stat">-1"</td>
+              <td class="stat">84.2 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">15</td>
+              <td class="player">— <span class="hand">L</span></td>
+              <td class="stat" style="color:#22c55e">+3.3"</td>
+              <td class="stat">-3"</td>
+              <td class="stat">86.5 mph</td>
+            </tr></tbody>
+          </table>
+        </div>
+        <div class="tab-panel " id="panel-FS">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>投手</th>
+                <th>垂直位移 vs 同儕</th>
+                <th>水平位移 vs 同儕</th>
+                <th>球速</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td class="rank">🥇</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+8.8"</td>
+              <td class="stat">-3"</td>
+              <td class="stat">85.7 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">🥈</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+5.2"</td>
+              <td class="stat">-4.4"</td>
+              <td class="stat">80.1 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">🥉</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+4.0"</td>
+              <td class="stat">-2.2"</td>
+              <td class="stat">86.8 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">4</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+2.7"</td>
+              <td class="stat">1.8"</td>
+              <td class="stat">89.6 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">5</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+2.3"</td>
+              <td class="stat">3.6"</td>
+              <td class="stat">89.1 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">6</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+1.9"</td>
+              <td class="stat">0.4"</td>
+              <td class="stat">88.6 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">7</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#22c55e">+0.1"</td>
+              <td class="stat">1.8"</td>
+              <td class="stat">84.0 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">8</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#ef4444">-0.5"</td>
+              <td class="stat">0.5"</td>
+              <td class="stat">87.8 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">9</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#ef4444">-0.6"</td>
+              <td class="stat">0.4"</td>
+              <td class="stat">91.7 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">10</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#ef4444">-0.7"</td>
+              <td class="stat">-1.3"</td>
+              <td class="stat">87.6 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">11</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#ef4444">-0.9"</td>
+              <td class="stat">-1.4"</td>
+              <td class="stat">80.4 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">12</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#ef4444">-1.0"</td>
+              <td class="stat">-3.3"</td>
+              <td class="stat">87.0 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">13</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#ef4444">-2.2"</td>
+              <td class="stat">-0.4"</td>
+              <td class="stat">90.0 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">14</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#ef4444">-2.4"</td>
+              <td class="stat">-1.4"</td>
+              <td class="stat">92.0 mph</td>
+            </tr>
+            <tr>
+              <td class="rank">15</td>
+              <td class="player">— <span class="hand">R</span></td>
+              <td class="stat" style="color:#ef4444">-3.5"</td>
+              <td class="stat">-0.7"</td>
+              <td class="stat">88.4 mph</td>
+            </tr></tbody>
+          </table>
+        </div>
+<p class="footer">最後更新：2026-03-29｜<a href="https://baseballsavant.mlb.com/leaderboard/pitch-movement" target="_blank">原始資料</a></p>
+<script>
+function showTab(code) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + code).classList.add('active');
+  document.getElementById('btn-' + code).classList.add('active');
+}
+</script>
+</body>
+</html>
