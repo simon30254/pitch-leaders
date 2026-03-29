@@ -47,7 +47,12 @@ def build_html(all_data):
 
         rows_html = ""
         for rank, r in enumerate(rows_sorted, 1):
-            name_val = r.get("player_name", r.get("name_display_first_last", "—"))
+            name_val = (
+    r.get("last_name, first_name") or
+    r.get("player_name") or
+    r.get("name_display_first_last") or
+    "—"
+)
             diff_z = r.get("diff_z", "—")
             diff_x = r.get("diff_x", "—")
             velocity = r.get("velocity", r.get("avg_speed", "—"))
